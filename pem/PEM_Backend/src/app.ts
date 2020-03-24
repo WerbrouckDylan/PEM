@@ -4,6 +4,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import bodyParser from 'body-parser';
 
 dotenv.config();
 /**
@@ -12,6 +13,8 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 5000; // TODO: get port from .env file
 const uri = 'mongodb+srv://Dylan:Passw0rd@cluster0-8qfko.gcp.mongodb.net/test?retryWrites=true&w=majority';
+app.use(bodyParser.json());
+
 /**
  *  App Configuration
  */
@@ -29,10 +32,12 @@ connection.once('open', () => {
 /**
  * Routes Definitions
  */
-
 app.get('/', (req, res) => {
 	res.send('hello world');
   });
+
+const usersRouter = require('./users');
+app.use('/users', usersRouter);
 
 /**
  * Server Activation
