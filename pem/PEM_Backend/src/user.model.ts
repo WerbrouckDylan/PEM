@@ -2,11 +2,7 @@ import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 
-export type User = {
-  username: string
-}
-
-const userSchema = new Schema(
+export const userSchema = new Schema(
   {
     username: {
       type: String,
