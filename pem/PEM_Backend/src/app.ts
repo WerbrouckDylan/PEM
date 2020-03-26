@@ -21,6 +21,7 @@ const app = express();
  */
 
 app.use(bodyParser.json());
+
 mongoose.connect(uri, {
   useNewUrlParser: true,
   useCreateIndex: true,
